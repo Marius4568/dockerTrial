@@ -5,7 +5,7 @@ services:
     image: travelist
     build:
       context: .
-      dockerfile: Travelist/Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - "80:80"
       - "443:443"
