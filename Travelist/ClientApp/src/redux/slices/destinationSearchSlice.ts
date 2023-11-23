@@ -1,17 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Destination } from '../../types/destinationTypes.ts';
-
 interface DestinationSearchState {
   isFocused: boolean;
-  suggestions: Destination[];
+  searchSuggestions: string[];
+  // Updated on every key stroke
   searchQuery: string;
+  // Updated when the user is searching for something
+  searchTerm: string;
+  areSuggestionsOpen: boolean;
+  isLoading: boolean;
 }
 
 const initialState: DestinationSearchState = {
   isFocused: false,
-  suggestions: [],
+  searchSuggestions: [],
   searchQuery: '',
+  searchTerm: '',
+  areSuggestionsOpen: false,
+  isLoading: false,
 };
 
 const destinationSearchSlice = createSlice({
@@ -21,14 +27,23 @@ const destinationSearchSlice = createSlice({
     setFocus: (state, action: PayloadAction<boolean>) => {
       state.isFocused = action.payload;
     },
-    setSuggestions: (state, action: PayloadAction<Destination[]>) => {
-      state.suggestions = action.payload;
+    setSearchSuggestions: (state, action: PayloadAction<string[]>) => {
+      state.searchSuggestions = action.payload;
     },
     setSearchQuery: (state, action: PayloadAction<string>) => { 
       state.searchQuery = action.payload;
-    }
+    },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
+    setAreSuggestionsOpen: (state, action: PayloadAction<boolean>) => { 
+      state.areSuggestionsOpen = action.payload;
+    },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { setFocus, setSuggestions, setSearchQuery } = destinationSearchSlice.actions;
+export const { setFocus, setSearchSuggestions, setSearchQuery, setSearchTerm, setAreSuggestionsOpen, setLoading } = destinationSearchSlice.actions;
 export default destinationSearchSlice.reducer;

@@ -23,7 +23,7 @@ module.exports = {
       typescript: true,
     }
   },
-  ignorePatterns: ['dist', 'jest.config.ts', 'vite.config.ts', 'config.ts', 'env.d.ts', '__mocks__/fileMock.ts'],
+  ignorePatterns: ['dist', 'jest.config.ts', 'vite.config.ts', 'config.ts', 'env.d.ts', 'test/__mocks__/fileMock.ts'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -31,6 +31,10 @@ module.exports = {
     }
   },
   rules: {
+    'react/boolean-prop-naming': ['error', {
+      'propTypeNames': ['bool', 'mutuallyExclusiveTrueProps'],
+      'rule': '^(is|has|are|have)[A-Z]([A-Za-z0-9]?)+'
+    }],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
@@ -45,7 +49,6 @@ module.exports = {
     'no-whitespace-before-property': 'error',
     'no-confusing-arrow': ['error', { 'allowParens': true }],
     'prefer-const': 'error',
-    'react/boolean-prop-naming': 'error',
     'no-var': 'error',
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
     'prefer-arrow-callback': 'error',

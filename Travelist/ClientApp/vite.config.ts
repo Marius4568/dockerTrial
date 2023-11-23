@@ -9,6 +9,13 @@ export default defineConfig({
     outDir: 'build'  
   },
      server: {
+      proxy: {
+        '/api': {
+          target: 'https://localhost:7011',
+          // In production should not be set to false. Look into having a valid SSL Certificate
+          secure: false,
+        },
+      },
        port: 44405,
        https: true
   },

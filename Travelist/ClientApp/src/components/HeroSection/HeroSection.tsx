@@ -1,5 +1,5 @@
 import HeroImg from '../../public/heroImg.png';
-import DestinationSearchBar from '../SearchBar/DestinationSearchBar.tsx';
+import DestinationSearchBar from '../DestinationSearchBar/SearchBar/SearchBar.tsx';
 
 export default function HeroSection() {
   return (
